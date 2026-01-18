@@ -80,6 +80,12 @@ export function ToolkitPanel() {
                                 color="text-indigo-500"
                                 onClick={() => handleToolClick('distribution')}
                             />
+                            <ToolCard
+                                icon={ArrowRightLeft}
+                                label="Corr"
+                                color="text-purple-500"
+                                onClick={() => handleToolClick('correlation')}
+                            />
                         </div>
                     </div>
 

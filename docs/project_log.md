@@ -11,7 +11,10 @@
 - **Feature**: Implemented Python Execution Engine for Hybrid Lab.
 - **Backend**: Added `PythonSessionService` with persistent variables and `py.` publishing logic map.
 - **UI**: Upgraded `SQLLab` to `HybridLab` (Multi-tab support). Added `VariableExplorer` sidebar.
-- **Status**: Verified User can write Python, see variables, and switch to SQL seamlessy.
+- **2026-01-19**: 完成 Hybrid Lab Python Engine (F08.6)。实现 Python 会话管理与前端变量浏览器。
+- **2026-01-19**: 补全基础分析功能 (F07.1, F07.2)。
+    - 后端: `AnalysisService` 新增 `dupes` (重复校验) 与 `correlation` (相关性矩阵) 算法。
+    - 前端: `ToolkitPanel` 新增入口；`StatsTab` 支持 Heatmap 可视化渲染。
 
 ## 2026-01-17: Design Iteration - Hybrid Lab
 - **Spec Update**: Refined Section 3.5 (Hybrid Lab) based on user feedback.

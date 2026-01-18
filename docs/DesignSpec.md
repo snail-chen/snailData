@@ -628,7 +628,7 @@ AI 的价值不是“聊天”，而是把复杂分析动作变成可执行、�
   * **Chat Area**: 对话流。
   * **Action Area**: 预设快捷指令 ("解释数据", "生成 SQL", "清洗建议")。
 * **右侧边栏 (Right Sidebar)**：上下文感知的多功能面板。
-  * **在 Data Grid 视图**: 显示 **“常用分析工具箱” (Analysis Toolkit)**，预设多种一键分析工具（主成分分析、WOE、IV值计算等）与可视化工具。
+  * **在 Data Grid 视图**: 显示 **“常用分析工具箱” (Analysis Toolkit)**，预设多种一键分析工具（主成分分析、WOE、IV值计算、**重复值检测**、**相关性矩阵**等）与可视化工具。
   * **在 SQL Lab 视图**: 显示 **“临时变量管理器” (Variable Explorer)**，实时展示当前 Session 中的中间表与元数据。
 
 ### 4.1 关键交互模型 (Interaction Model)

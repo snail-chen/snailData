@@ -19,9 +19,91 @@ class AnalysisService:
             return self._compute_outliers(conn, req.column)
         elif req.type == 'missing':
             return self._compute_missing(conn, req.column)
+        elif req.type == 'dupes':
+            return self._compute_dupes(conn, req.column)
+        elif req.type == 'correlation':
+            return self._compute_correlation(conn)
         
         conn.close()
         return AnalysisResponse(title="Unknown", chart_type="none", data={})
+
+    def _compute_dupes(self, conn, column: str) -> AnalysisResponse:
+        # If column is * or None, check full row duplicates
+        target = column if column and column != '*' else '*'
+        
+        group_sql = f"GROUP BY {target}" if target != '*' else "GROUP BY ALL"
+        select_sql = f"SELECT {target}" if target != '*' else "SELECT *"
+        
+        stats = conn.execute(f"SELECT COUNT(*) FROM loans").fetchone()
+        total_rows = stats[0]
+        
+        unique_rows = conn.execute(f"""
+            SELECT COUNT(*) FROM (
+                {select_sql} FROM loans {group_sql}
+            )
+        """).fetchone()[0]
+        
+        dupes = total_rows - unique_rows
+        
+        conn.close()
+        
+        return AnalysisResponse(
+            title=f"Duplicate Analysis: {target}",
+            chart_type="bar",
+            data={
+                "xAxis": ["Unique", "Duplicate"],
+                "series": [{"data": [unique_rows, dupes], "type": "bar"}],
+                "summary": {
+                    "count": total_rows,
+                    "missing": 0,
+                    "mean": 0,
+                    "std": 0,
+                    "min": 0,
+                    "max": 0
+                }
+            }
+        )
+
+    def _compute_correlation(self, conn) -> AnalysisResponse:
+        # 1. Select only numeric columns
+        schema = conn.execute("DESCRIBE loans").fetchall()
+        numeric_cols = [row[0] for row in schema if 'INT' in row[1] or 'DOUBLE' in row[1] or 'FLOAT' in row[1]]
+        
+        # 2. Compute Correlation Matrix
+        # DuckDB 0.9+ supports corr matrix via some tricks or just pair-wise
+        # For simplicity in this mocked/local version, we do pair-wise for up to 10 cols
+        
+        cols_to_use = numeric_cols[:10] # Limit to 10 for performance
+        labels = cols_to_use
+        
+        matrix_data = []
+        
+        for col_a in cols_to_use:
+            row_data = []
+            for col_b in cols_to_use:
+                val = conn.execute(f"SELECT CORR({col_a}, {col_b}) FROM loans").fetchone()[0]
+                row_data.append(round(val or 0, 2))
+            matrix_data.append(row_data)
+            
+        conn.close()
+        
+        return AnalysisResponse(
+            title="Correlation Matrix",
+            chart_type="heatmap",
+            data={
+                "xAxis": labels, # Cols
+                "yAxis": labels, # Rows
+                "series": [{"data": matrix_data, "type": "heatmap"}],
+                "summary": {
+                    "count": len(cols_to_use),
+                    "missing": 0,
+                    "mean": 0,
+                    "std": 0,
+                    "min": 0,
+                    "max": 0
+                }
+            }
+        )
 
     def _compute_missing(self, conn, column: str) -> AnalysisResponse:
         # 1. Count Total vs Missing

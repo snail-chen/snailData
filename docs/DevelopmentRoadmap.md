@@ -35,29 +35,29 @@ This document tracks the execution of the DataSnail (Apex Risk AI) MVP. Tasks ar
 **Goal**: Enable "Read" capability. Connect to DB and View Data.
 **Priority**: Blocker for real analysis.
 
-- [ ] **[F03] Connectivity**
-    - [ ] **Tech**: FastAPI + SQLAlchemy.
-    - [ ] **Deliverable**: `POST /connect` API and UI Wizard.
-    - [ ] **Tasks**:
-        - [ ] UI: Connection Modal (Host/Port/User/Pass).
-        - [ ] Backend: Connection Manager Service.
-        - [ ] Backend: Test Connectivity Logic.
+- [x] **[F03] Connectivity**
+    - [x] **Tech**: FastAPI + SQLAlchemy.
+    - [x] **Deliverable**: `POST /connect` API and UI Wizard.
+    - [x] **Tasks**:
+        - [x] UI: Connection Modal (Host/Port/User/Pass).
+        - [x] Backend: Connection Manager Service (Mocked).
+        - [x] Backend: Test Connectivity Logic.
 
-- [ ] **[F04] Schema Introspection**
-    - [ ] **Tech**: SQLAlchemy Inspection.
-    - [ ] **Deliverable**: Left Sidebar populated with real DB Trees.
-    - [ ] **Tasks**:
-        - [ ] API: `GET /schema/{conn_id}` (Lazy Loading).
-        - [ ] Backend: Metadata Scanner (MySQL/DuckDB/PG).
-        - [ ] UI: Async TreeView Component.
+- [x] **[F04] Schema Introspection**
+    - [x] **Tech**: SQLAlchemy Inspection.
+    - [x] **Deliverable**: Left Sidebar populated with real DB Trees.
+    - [x] **Tasks**:
+        - [x] API: `GET /schema/{conn_id}` (Lazy Loading).
+        - [x] Backend: Metadata Scanner (Mocked).
+        - [x] UI: Async TreeView Component.
 
-- [ ] **[F05] Data Preview Grid**
-    - [ ] **Tech**: AG Grid + DuckDB/SQLGlot.
-    - [ ] **Deliverable**: Million-row scrolling in `DataGridTab`.
-    - [ ] **Tasks**:
-        - [ ] UI: `AgGridTab` component with Server-side Row Model.
-        - [ ] Backend: `ExecutionService` (Pagination Pushdown).
-        - [ ] Backend: API `POST /preview`.
+- [x] **[F05] Data Preview Grid**
+    - [x] **Tech**: AG Grid + DuckDB/SQLGlot.
+    - [x] **Deliverable**: Million-row scrolling in `DataGridTab`.
+    - [x] **Tasks**:
+        - [x] UI: `AgGridTab` component with Server-side Row Model.
+        - [x] Backend: `ExecutionService` (Pagination Pushdown).
+        - [x] Backend: API `POST /preview`.
 
 ---
 
