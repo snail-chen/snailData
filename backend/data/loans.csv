@@ -1,0 +1,31 @@
+user_id,loan_amount,term,int_rate,grade,annual_inc,loan_status
+1001,5000,36 months,10.65,B,24000,Fully Paid
+1002,2500,60 months,15.27,C,30000,Charged Off
+1003,2400,36 months,15.96,C,12252,Fully Paid
+1004,10000,36 months,13.49,C,49200,Fully Paid
+1005,3000,60 months,12.69,B,80000,Current
+1006,5000,36 months,7.90,A,36000,Fully Paid
+1007,7000,60 months,15.96,C,47004,Fully Paid
+1008,3000,36 months,18.64,E,48000,Fully Paid
+1009,5600,60 months,21.28,F,40000,Charged Off
+1010,5375,60 months,12.69,B,15000,Charged Off
+1011,6500,60 months,14.65,C,72000,Fully Paid
+1012,12000,36 months,12.69,B,75000,Fully Paid
+1013,9000,36 months,13.49,C,30000,Charged Off
+1014,3000,36 months,9.91,B,15000,Fully Paid
+1015,10000,36 months,10.65,B,100000,Fully Paid
+1016,1000,36 months,16.29,D,28000,Fully Paid
+1017,10000,36 months,15.27,C,42000,Fully Paid
+1018,3600,36 months,6.03,A,110000,Fully Paid
+1019,6000,36 months,11.71,B,84000,Fully Paid
+1020,15000,36 months,14.27,C,60000,Current
+1021,21000,60 months,12.42,B,105000,Fully Paid
+1022,4000,36 months,11.71,B,20000,Fully Paid
+1023,1000,36 months,11.71,B,50000,Fully Paid
+1024,12000,36 months,11.71,B,55000,Fully Paid
+1025,8000,36 months,11.71,B,65000,Fully Paid
+1026,12000,36 months,11.71,B,70000,Fully Paid
+1027,35000,60 months,20.00,G,80000,Charged Off
+1028,24000,60 months,18.00,E,90000,Current
+1029,18000,60 months,16.00,D,85000,Fully Paid
+1030,22000,60 months,14.00,C,75000,Current

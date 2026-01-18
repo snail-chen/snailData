@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: 'Inter', sans-serif;
+    --color-slate-50: #f8fafc;
+    --color-slate-100: #f1f5f9;
+    --color-slate-200: #e2e8f0;
+    /* ... automation of slate colors is explicit in v4 if needed, but default theme usually includes them */
+}
+
+@layer base {
+    body {
+        font-family: 'Inter', sans-serif;
+        color: var(--color-slate-900);
+        /* bg-slate-50 is tailwind utility */
+        @apply bg-slate-50 antialiased;
+    }
+}
+
+/* Custom Utilities from demo.html */
+@layer components {
+    .glass-card {
+        @apply bg-white border border-slate-200 rounded-xl shadow-sm transition-all duration-300;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+
+    .micro-tab {
+        @apply h-8 px-3 text-[11px] font-bold rounded-md text-slate-500 transition-colors hover:text-blue-600 hover:bg-slate-50;
+    }
+
+    .micro-tab.active {
+        @apply bg-blue-600 text-white shadow-md shadow-blue-200;
+    }
+
+    .sidebar-anim {
+        @apply transition-all duration-300 ease-in-out;
+    }
+
+    /* Scrollbar Polish */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-slate-200 rounded-full;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-slate-400;
+    }
+}
